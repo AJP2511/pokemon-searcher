@@ -31,6 +31,7 @@ export const InputPokemonName = styled.input`
   border-radius: 5px;
   margin-bottom: 30px;
   border: 2px solid #feca1b;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 `;
 
 export const ButtonSearch = styled.button`
@@ -43,6 +44,7 @@ export const ButtonSearch = styled.button`
   font-weight: bold;
   transition: all 400ms ease;
   cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 
   &:hover {
     background-color: #feca1b;

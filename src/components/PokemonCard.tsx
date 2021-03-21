@@ -26,7 +26,7 @@ const PokemonCard = ({
           <TitleCard>Results</TitleCard>
           <PokemonContainer>
             <PictureContainer>
-              <img src={picture} alt="pokemon" />
+              <img src={picture} alt="pokemon" width="200" height="200" />
             </PictureContainer>
             <NameContainer>
               <strong>Name:</strong> {name}
