@@ -14,9 +14,10 @@ export const SearchContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  margin: 30px 0;
+  margin: 30px auto;
   font-size: 4rem;
   color: #feca1b;
+  text-align: center;
   font-family: "chango";
   -webkit-text-stroke-color: #395ba8;
   -webkit-text-stroke-width: 2px;
