@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+button {
+  font-family: "Montserrat";
+}
+
+@media screen and (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+@media screen and (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}

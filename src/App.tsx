@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import PokemonCard from "./components/PokemonCard";
+import { IPkmApi } from "./Interfaces/PkmInterface";
+import {
+  MainContainer,
+  ButtonSearch,
+  InputPokemonName,
+  Title,
+  SearchContainer,
+  OutputCardContainer,
+} from "./styles/App.styled";
 
-function App() {
+const App = () => {
+  const [name, setName] = useState<string>("");
+  const [pkm, setPkm] = useState<IPkmApi | null>(null);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
+  const handleClick = () => {
+    const getPkm = async () => {
+      const request = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      const data: IPkmApi = await request.json();
+      setPkm(data);
+      setIsLoaded(true);
+    };
+    getPkm();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContainer>
+      <SearchContainer>
+        <Title>Pokémon Searcher</Title>
+        <InputPokemonName
+          type="text"
+          value={name}
+          onChange={({ target }) => setName(target.value.toLowerCase())}
+          placeholder="Search a pokémon"
+        />
+        <ButtonSearch onClick={handleClick}>Search</ButtonSearch>
+      </SearchContainer>
+      <OutputCardContainer>
+        <PokemonCard
+          ability={pkm?.abilities}
+          types={pkm?.types}
+          name={pkm?.name}
+          loaded={isLoaded}
+          picture={pkm?.sprites.front_default}
+        />
+      </OutputCardContainer>
+    </MainContainer>
   );
-}
+};
 
 export default App;
